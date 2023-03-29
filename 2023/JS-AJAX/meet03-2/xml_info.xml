@@ -1,0 +1,14 @@
+<DATA>
+    <STUDENT>
+        <ID>A001</ID>
+        <NAME>Anas Azhar</NAME>
+        <CLASS>10 komp</CLASS>
+        <YEAR>203</YEAR>
+    </STUDENT>
+    <STUDENT>
+        <ID>A002</ID>
+        <NAME>ANASs</NAME>
+        <CLASS>10 teknik</CLASS>
+        <YEAR>203</YEAR>
+    </STUDENT>
+</DATA>

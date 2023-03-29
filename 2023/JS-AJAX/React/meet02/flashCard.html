@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container{
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+            background-color: yellowgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .container1{
+            width: 100%;
+            height: 100vh;
+            box-sizing: border-box;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .incorrect{
+            
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+
+        class Game extends React.Component{
+
+            constructor(props){
+                super(props)
+                this.state = {
+                    num1 : Math.floor((Math.random() * 10)),
+                    num2 : Math.floor((Math.random() * 10)),
+                    score : 0,
+                    response : "",
+                    incorect : false
+                }
+            }
+
+            
+
+            renderProblemPage = () => {
+                return (
+                    <div className="container">
+                        <h1 className={this.state.incorect ? " incorect" : ""}>{this.state.num1} + {this.state.num2}</h1>
+                        <input type="text" value={this.state.response} placeholder="Put your answer here" onChange={this.updateResponse} onKeyPress={this.checkResponse}/>
+                        <p>your score is : {this.state.score}</p>
+                    </div>
+                )
+            }
+
+            renderWinPage = () => {
+                return (
+                    <div className="container1">
+                        <h1>You lose</h1>
+                    </div>
+                )
+            }
+
+            render = () => {
+                if (this.state.score < 0){
+                    
+                    return this.renderWinPage();
+                }else{
+                    return this.renderProblemPage();
+                }
+            }
+
+            updateResponse = event => {
+
+                this.setState({
+                    response : event.target.value
+                })
+            }
+
+            checkResponse = event => {
+                if (event.key === "Enter"){
+                    console.log("OK")
+                    
+                    if (JSON.parse(this.state.response) === this.state.num1 + this.state.num2){
+                        const h1 = document.querySelector('h1');
+                        h1.style.color = 'black';
+                        this.setState(state => ({
+                            score : state.score + 1,
+                            response : "",
+                            num1 : Math.floor((Math.random() * 10)),
+                            num2 : Math.floor((Math.random() * 10))                   
+                        }))
+                    }else{
+                        
+                        this.setState(state => ({
+                            score : state.score -1,
+                            response : ""
+                        }))
+                    }
+                }
+                
+            }
+            
+        }
+
+        class App extends React.Component{
+
+            render = () => {
+                return (
+                    <Game />
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script>
+</body>
+</html>

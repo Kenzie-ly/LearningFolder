@@ -1,0 +1,129 @@
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <title>First React</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+     
+            .body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+     
+            .container {
+                width: 100%;
+                height: 100vh;
+                box-sizing: border-box;
+                background-color: yellowgreen;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="text/babel">
+     
+            class Game extends React.Component {
+     
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        num1 : Math.floor((Math.random()*10)),
+                        num2 : Math.floor((Math.random()*10)),
+                        score: 0,
+                        response: ""
+                    }
+                }
+                renderProblemPage = () =>{
+                    return (
+                        <div className="container">
+                            <h1>{this.state.num1} + {this.state.num2}</h1>
+                            <input type="text" value={this.state.response} placeholder="Put your answer here" onChange={this.updateResponse} onKeyPress={this.checkResponse}/>
+                            <p>Your score is : {this.state.score}</p>
+                        </div>
+                    )
+                }
+                renderWinPage = () =>{
+                    return (
+                        <div className="container">
+                            <h1>You Win</h1>
+                        </div>
+                    )
+                }
+                returnLosePage = () =>{
+                    return (
+                        <div className="container">
+                            <h1>You LOSE</h1>
+                        </div>
+                    )
+                }
+     
+                render = () => {
+                    if (this.state.score >5){
+                        return this.renderWinPage();
+                    }if (this.state.score <-5){
+                        return this.returnLosePage();
+                    }else{
+                        return this.renderProblemPage();
+                    }
+                }
+     
+                updateResponse = () => {
+     
+                    this.setState({
+                        response : event.target.value
+                    })
+                }
+     
+                checkResponse = event => {
+     
+                    if (event.key === "Enter"){
+                        if (JSON.parse(this.state.response) === this.state.num1 + this.state.num2){
+                            this.setState(state => ({
+                                score : state.score + 1,
+                                response : "",
+                                num1 : Math.floor(Math.random()*10),
+                                num2 : Math.floor(Math.random()*10)
+                            }))
+                            document.querySelector("p").style.color = "black";
+                            document.querySelector("h1").style.color = "black";
+                        }else{
+                            this.setState(state => ({
+                                score : state.score - 1,
+                                response : "",
+     
+                            }))
+                            document.querySelector("p").style.color = "red";
+                            document.querySelector("h1").style.color = "red";
+     
+                        }
+                    }
+                }
+            }
+     
+     
+            class App extends React.Component{
+     
+                render = () => {
+                    return (
+                        <Game/>
+                    )
+                }
+            }
+     
+            ReactDOM.render(<App/>, document.getElementById("app"));
+        </script>
+    </body>
+    </html>

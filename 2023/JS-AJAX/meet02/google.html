@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding List</title>
+    <script type="text/javascript">
+
+        document.addEventListener('DOMContentLoaded', function (){
+
+            document.querySelector("#submit-task").disabled = true;
+
+            document.querySelector("#entry-task").onkeyup = function () { //cek ad isi ato idak on key up
+
+                if (document.querySelector("#entry-task").value.trim().length > 0){
+                    document.querySelector("#submit-task").disabled = false;
+                } else {
+                    document.querySelector("#submit-task").disabled = true;
+                }
+
+            }
+
+            document.querySelector("#form-task").onsubmit = function () {
+
+                const li = document.createElement('li');
+                
+                li.innerHTML = document.querySelector("#entry-task").value;
+
+                document.querySelector("#tasks").append(li);
+
+                document.querySelector("#entry-task").value = "";
+
+                document.querySelector("#submit-task").disabled = true;
+
+                return false;
+            }
+            
+        })
+    </script>
+    <style>
+        
+        img.one {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            height: 100px;
+            padding: 80px 20px 100px 20px;
+        }
+
+        div{
+            height:200px;
+            width: 500px;
+            border: white 1px solid;
+            margin: 0px 100px 100px 343px;
+        }
+
+    
+    </style>
+
+</head>
+<body>
+    <img src="google.png" class="one" >
+    <center>
+        <form id="form-task" class="form">
+            <input type="search"  id="entry-task" placeholder="Telesuri" autocomplete="off" style="width: 500px;">
+            <input type="submit" text="search" id="submit-task" value="search">
+        </form>
+        <div style="float: left;">
+            <ul id="tasks" style="list-style: none; float: left;" ></ul>
+        </div>
+        
+    </center>
+
+</body>
+</html>

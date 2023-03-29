@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First React</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+
+        class Counter extends React.Component{
+
+            constructor(props){
+                super(props);
+                this.state = {
+                    count : 0
+                }
+            }
+
+            render = () => {
+                return (
+                    <div>
+                        <h1>{this.state.count}</h1>
+                        <button onClick={this.handlebtnClick}>INCREMENT</button>
+                        <button onClick={this.handlebtnClicks}>DECREMENT</button>
+                    </div>
+                )
+            }
+
+            handlebtnClick = () => {
+                this.setState(state => ({
+                    count : state.count + 1
+                }))
+            }
+
+            handlebtnClicks = () => {
+                this.setState(state => ({
+                    count : state.count - 1
+                }))
+            }
+            
+        }
+
+        class App extends React.Component{
+
+            render = () => {
+                return (
+                    <div>
+                        <Counter />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<App />, document.getElementById("app"))
+    </script>
+</body>
+</html>
