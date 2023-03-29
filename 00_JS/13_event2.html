@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Event 2</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1 id="heading-alien">Hello Alien</h1>
+	<button>Click There!</button>
+	<button>Click There Dor!</button>
+	<script type="text/javascript">
+		document.querySelector("button").innerHTML = "Anas";
+
+		var buttons = document.querySelectorAll("button");
+		buttons[1].innerHTML = "Click there 2";
+
+		document.querySelector("#heading-alien").innerHTML = "Hello Alien Alien";
+		$('#heading-alien').text("Hello Alien Alien")
+	</script>
+
+</body>
+</html>

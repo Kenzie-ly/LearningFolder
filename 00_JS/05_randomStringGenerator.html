@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random String Generator</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var counter = 0;
+		var alphabet = "abcdefghijklmnopqrstuvwxyz"
+		var result = ''
+
+
+		while (counter < 8){
+			result += alphabet[Math.floor(Math.random()* alphabet.length)]
+			counter++;	
+
+		}
+		console.log(result);
+
+
+	</script>
+</body>
+</html>

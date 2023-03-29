@@ -1,0 +1,70 @@
+.container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
+canvas {
+	background-color: green;
+}
+
+#dino {
+	width: 45px;
+	height: 50px;
+	background-image: url(img/dino.png);
+	background-size: 50px 50px;
+	position: relative;
+	top: 250px;
+	right: 457px;
+}
+
+#bin {
+	width: 20px;
+	height: 40px;
+	position: relative;
+	top: 260px;
+
+
+	background-image: url("img/bin.png");
+	background-size: 20px 40px;
+
+	animation: block 1s infinite linear;
+}
+
+.jump {
+  animation: jump 0.3s linear;
+}
+
+
+
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+
+  30% {
+    top: 130px;
+  }
+
+  50% {
+    top: 80px;
+  }
+
+  80% {
+    top: 130px;
+  }
+
+  100% {
+    top: 150px;
+  }
+}
+
+@keyframes block { 
+	from {
+		right: 48px;
+	}
+	to {
+		right: 540px;
+	}
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman 3</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var words = ["monkey", "dog", "cat"]
+
+		function pickWord() {
+			return words[Math.floor(Math.random()*words.length)];
+		}
+		var answerArray = []
+
+		function setUpAnswerArray(randomWord) {
+			for (var i=0; i< randomWord.length; i++){
+				answerArray[i] = "_"
+			}
+		}
+
+		function showPlayerProgress(answerArray) {
+			alert(answerArray.join(" "));
+		}
+
+		function getGuess() {
+			return prompt("Guess a letter")
+		}
+
+		function updatePlayerProgress(guess){
+			if (guess == null){
+				break;
+			} else if (guess.length !=1){
+				alert("sikok huruf cok");
+			} else{
+				for (var i = 0; i<randomWord.length; i++){
+					if (randomWord[i]===guess){
+						answerArray[i] = guess;
+						remainingLetters--;
+					}
+				}
+			}
+		}
+
+		function showAnswerAndContografts(){
+			alert("Good Job the awnser was "+ randomWord);
+		}
+		
+	</script>
+
+</body>
+</html>

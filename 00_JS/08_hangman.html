@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hangman</title>
+</head>
+<body>
+	<h1></h1>
+	<script type="text/javascript">
+		var words = [
+			"python",
+			"javascript",
+			"pascal",
+			"c++",
+			"lua",
+			"kivy",
+			"kivymd",
+			"html",
+			"c",
+			"typescript"
+		];
+
+		var randomWord = words[Math.floor(Math.random()*words.length)];
+		var answerArray = [];
+		var check = [];
+		for (var i=0; i<randomWord.length;i++){
+			answerArray[i]="_";
+
+		}
+		var remainingLetters = randomWord.length;
+		
+		while (remainingLetters){
+			alert(answerArray.join(" "));
+			var guess = prompt("guess a letter").toLocaleLowerCase();
+
+			if (guess){
+				check.push(guess);
+			}
+			if (guess == check){
+				alert("jangan samo lagi cok");
+			}
+
+			if (guess == null){
+				break;
+			} else if (guess.length !=1){
+				alert("sikok huruf cok");
+			} else{
+				for (var i = 0; i<randomWord.length; i++){
+					if (randomWord[i]===guess){
+						answerArray[i] = guess;
+						remainingLetters--;
+					}
+				}
+			}
+		}
+
+		alert("Good Job the awnser was "+ randomWord);
+		//var text = prompt("Put")
+		//console.log(text)
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Function Javascript</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		var ourFirstFunction = function() {
+			console.log("This is my first function");
+		}
+
+		ourFirstFunction();
+
+		var printingMultipleTimes = function(howmanyTimes, whattoPrint) {
+			for (var i= 0; i < howmanyTimes; i++){
+				console.log(i + " " +whattoPrint);
+			}
+		}
+
+		printingMultipleTimes(3, "I lovee You")
+
+		var double = function(number){
+			return number*2;
+		}
+		console.log(double(3) + double(10));
+		var result = double(20);
+		console.log(result);
+
+		function triple(number) {
+			return number*3;
+		}
+		console.log(triple(100));
+
+		function getMedal(pts) {
+			if (pts < 3){
+				console.log("Bronze")
+			}else if (pts < 7){
+				console.log("Silver")
+			}else if (pts >= 7){
+				console.log("Gold")
+			}
+		}
+		getMedal(1)
+	</script>
+
+</body>
+</html>

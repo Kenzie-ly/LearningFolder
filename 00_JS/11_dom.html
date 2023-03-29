@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM</title>
+</head>
+<body>
+	<h1 id="main-heading">Hello DOM ...</h1>
+	<script type="text/javascript">
+		var h1_label = document.getElementById('main-heading').innerHTML;
+		console.log(h1_label);
+
+		var newText = prompt("Input new Text : ")
+		h1_label.innerHTML = newText;
+		document.getElementById('main-heading').innerHTML = newText;
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Interactive and Stop</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+
+
+		
+		let alarm = setTimeout(	() => {alert("You need to do your homework!")},3000);
+
+
+		
+		function stopAlarm() {
+			let count = 0
+			console.log(count)
+			if (count == 0){
+				count += 1
+				console.log(count)
+				$("button").text("Start Alarm");
+				clearTimeout(alarm);
+				document.querySelector("#status").innerHTML = "Off";
+
+			}else if (count == 1 ){
+				console.log(count)
+				console.log("3")
+				$("button").text("Stop Alarm");
+				document.querySelector("#status").innerHTML = "On";
+				alarm = setTimeout(	() => {alert("You need to do your homework!")},3000);
+				}
+		}
+	</script>
+</head>
+<body>
+	<h1>Alarm On</h1>
+	<button onclick="stopAlarm()">Stop Alarm</button>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Draw</title>
+</head>
+<body>
+	<canvas id="canvas" width="400" height="400" style="background-color: gray; "></canvas>
+	<script type="text/javascript">
+		let canvas = document.getElementById("canvas");
+		let ctx = canvas.getContext("2d");
+		ctx.strokeStyle = "Orange";
+		ctx.lineWidth = 5;
+ 
+		ctx.beginPath()
+		ctx.moveTo(10,10);
+		ctx.lineTo(60,60);
+		///ctx.closePath();
+		ctx.stroke();
+		ctx.strokeStyle = "purple";
+		ctx.lineWidth = 1;
+ 
+		ctx.beginPath();
+		ctx.moveTo(40,30);
+		ctx.lineTo(100,90);
+		ctx.closePath();
+		ctx.stroke();
+		//home
+		ctx.strokeStyle="Black";
+		ctx.lineWidth = 3;
+		ctx.fillStyle = "white";
+		ctx.beginPath();
+		ctx.moveTo(100,100);
+		ctx.lineTo(100,60);
+		ctx.lineTo(130,30);
+		ctx.lineTo(160,60);
+		ctx.lineTo(160,100);
+		ctx.lineTo(100,100);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.fill();
+	</script>
+ 
+</body>
+</html>

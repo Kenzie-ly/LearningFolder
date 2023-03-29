@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Click Handler</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <img src="https://cdn.discordapp.com/attachments/829963063477665802/941607139221323786/Kamp-Koral-Patrick.png"style="width: 400px">
+    <br>
+    <h1>Mau gak Jadi pacar aku :3</h1>
+    <button class="iya"> Iya </button>
+    <button class="tidak"> Tidak </button>
+    <script type="text/javascript">        
+        var counter = 1;
+
+        function gerak(event){
+            let x = Math.ceil((Math.random()*30)*10)
+            let y = Math.ceil((Math.random()*300))
+            console.log(x)
+
+            $("button.tidak").offset({left : x, top : y});
+
+        }
+
+        function Asik(event){
+            alert("Asik")
+        }
+
+        $('button.tidak').mouseenter(gerak);
+        $('button.ya').click(Asik);
+    </script>
+</body>
+</html>
